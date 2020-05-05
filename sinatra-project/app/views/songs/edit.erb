@@ -1,8 +1,9 @@
-<h1>Create a Song</h1>
+<h1>Edit a Song</h1>
 
-<form action='/songs' method='POST'>
+<form action='/songs/<%= @song.id %>' method='POST'>
+  <input id='hidden' type='hidden' name='_method' value='PATCH' />
   <label> title: </label>
-  <input type='text' name="name" placeholder='Playa'>
+  <input type='text' name="name" placeholder='Playa' value=<%= @song.name %>>
   
   <label> artist: </label>
   <input type='text' name="artist" placeholder='Playa'>

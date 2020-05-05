@@ -3,5 +3,11 @@
 
 <p>single song goes here</p>
 
-<%= @song %>
+<%= @song.name %>
 
+<a href="/songs/<%= @song.id %>/delete">Delete Song</a>
+
+<form action='/songs/<%= @song.id %>/delete' method='POST'>
+  <input id='hidden' type='hidden' name='_method' value='DELETE' />
+  <input type='submit' value ="Delete">
+</form>
