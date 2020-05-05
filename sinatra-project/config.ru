@@ -9,4 +9,5 @@ use Rack::MethodOverride
 
 
 use SongsController
+use UsersController
 run ApplicationController
