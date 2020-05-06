@@ -10,4 +10,5 @@ use Rack::MethodOverride
 
 use SongsController
 use UsersController
+use SessionsController
 run ApplicationController

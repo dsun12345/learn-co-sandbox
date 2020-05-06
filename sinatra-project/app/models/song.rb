@@ -6,6 +6,8 @@ class Song < ActiveRecord::Base
   validates :genre, presence: TRUE
   validates :release_date, presence: TRUE
   
+  belongs_to :user
+    
 #validate method_name
   
 end 
