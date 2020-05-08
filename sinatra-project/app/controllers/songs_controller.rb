@@ -2,7 +2,6 @@ class SongsController < ApplicationController
   
   
   get '/songs' do 
-    binding.pry
     @songs = Song.all
     erb :"songs/index"
   end 
@@ -15,7 +14,7 @@ class SongsController < ApplicationController
   
   post '/songs' do 
     @song = Song.new(params)
-    @song.user = current_user 
+    # @song.user = current_user 
     if @song.save
       redirect "/songs/#{@song.id}"
     else 

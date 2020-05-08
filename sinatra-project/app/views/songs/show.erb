@@ -1,13 +1,9 @@
-<h1>Show Songs</h1>
+<h1>Show Song</h1>
 
-
-<p>single song goes here</p>
-
-<%= @song.name %>
-
-<a href="/songs/<%= @song.id %>/delete">Delete Song</a>
+<%= @song.id %>. <%= @song.name %>, <%= @song.artist%>, <%= @song.genre %>, <%= @song.release_date %>
 
 <form action='/songs/<%= @song.id %>/delete' method='POST'>
   <input id='hidden' type='hidden' name='_method' value='DELETE' />
-  <input type='submit' value ="Delete">
+  <input type='submit' value ="Delete Song">
 </form>
+<a href='/songs'><button>Back To Index</button></a>
