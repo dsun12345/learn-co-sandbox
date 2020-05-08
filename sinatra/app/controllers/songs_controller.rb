@@ -2,9 +2,7 @@ class SongsController < ApplicationController
 
 
   get '/songs' do 	
-    binding.pry
     @songs = current_user.songs
-    
     erb :"songs/index"	
   end 	
 
