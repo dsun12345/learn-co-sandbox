@@ -23,17 +23,17 @@ class SongsController < ApplicationController
   end 	
 
   get '/songs/:id' do	
-    binding.pry
-    if @song = Song.find(params[:id])	
+    @song = Song.find_by_id(params[:id])
+    if @song && @song.user.id == current_user.id
       erb :'songs/show'
     else 
       redirect to '/songs'
     end 
   end 	
 
-  get '/songs/:id/edit' do 	
-    @song = Song.find(params[:id])
-    if @song
+  get '/songs/:id/edit' do 
+    @song = Song.find_by_id(params[:id])
+    if @song && @song.user == current_user.id
       erb :'songs/edit'	
     else 
       redirect to '/songs'
