@@ -1,7 +1,7 @@
 class SongsController < ApplicationController	
 
 
-  get '/songs' do 	
+  get '/songs' do 
     @songs = current_user.songs
     erb :"songs/index"	
   end 	
@@ -23,13 +23,21 @@ class SongsController < ApplicationController
   end 	
 
   get '/songs/:id' do	
-    @song = Song.find(params[:id])	
-    erb :'songs/show'	
+    binding.pry
+    if @song = Song.find(params[:id])	
+      erb :'songs/show'
+    else 
+      redirect to '/songs'
+    end 
   end 	
 
   get '/songs/:id/edit' do 	
-    @song = Song.find(params[:id])	
-    erb :'songs/edit'	
+    @song = Song.find(params[:id])
+    if @song
+      erb :'songs/edit'	
+    else 
+      redirect to '/songs'
+    end 
   end 	
 
   patch '/songs/:id' do 	
@@ -43,7 +51,7 @@ class SongsController < ApplicationController
     @song = Song.find(params[:id])	
     @song.destroy 	
     if @song.errors.messages.length <= 0 	
-      erb :"songs/index"	
+      redirect to '/songs'	
     else	
       erb :"songs/#{@song.id}"	
     end 	
