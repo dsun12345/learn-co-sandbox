@@ -1,18 +1,19 @@
 class UsersController < ApplicationController
   
+ 
   get '/users/:id' do 
-    if logged_in?(session)
+    # if logged_in?
       @user = User.find(params[:id])
       erb :'users/show'
-    end 
+    # end 
   end 
   
   get '/sign_up' do 
-    if logged_in?(session)
-      redirect to 'songs'
-    else
+    # if logged_in?(session)
+    #   redirect to 'songs'
+    # else
       erb :'/users/signup'
-    end 
+    # end 
   end 
   
   post '/sign_up' do 
@@ -37,8 +38,14 @@ class UsersController < ApplicationController
     end 
   end 
   
-  delete '/users/deactivate' do 
-        
+  delete '/users/:id/deactivate' do 
+    @user = User.find(params[:id])
+    @user.destroy 
+    if @user.errors.messages.length <= 0 
+      erb :"/welcome"
+    else
+      erb :"users/#{@user.id}"
+    end 
   end 
   
   
