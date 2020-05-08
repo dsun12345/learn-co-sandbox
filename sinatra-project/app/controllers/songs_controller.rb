@@ -3,7 +3,6 @@ class SongsController < ApplicationController
   
   get '/songs' do 
     @songs = Song.all
-    @songs = current_user.songs
     erb :"songs/index"
   end 
   
