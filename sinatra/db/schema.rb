@@ -14,11 +14,11 @@
 ActiveRecord::Schema.define(version: 20200508170026) do
 
   create_table "songs", force: :cascade do |t|
-    t.string "name"
-    t.string "artist"
-    t.string "genre"
-    t.string "release_date"
-    t.string "user_id"
+    t.string  "name"
+    t.string  "artist"
+    t.string  "genre"
+    t.string  "release_date"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
