@@ -1,14 +1,29 @@
-require './config/environment'
+require './config/environment'	
 
-class ApplicationController < Sinatra::Base
+class ApplicationController < Sinatra::Base	
 
-  configure do
-    set :public_folder, 'public'
-    set :views, 'app/views'
-  end
+  configure do	
+    set :public_folder, 'public'	
+    set :views, 'app/views'	
+    enable :sessions
+    set :sessions, 'test123'
+  end	
 
-  get "/" do
-    erb :welcome
-  end
+  get "/" do	
+    erb :welcome	
+  end	
+
+  helpers do 	
+
+    def logged_in?(session)	
+      !!session[:user_id]	
+    end 	
+
+    def current_user(session)	
+      @user = User.find(session[:user_id])	
+    end 	
+
+  end 	
+
 
 end

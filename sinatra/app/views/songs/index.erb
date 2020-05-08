@@ -1,0 +1,12 @@
+<h2>Welcome</h2>	
+
+<h3>All Songs</h3>	
+<ul>	
+  <% Song.all.each do |song| %>	
+    <li>	
+      <%= song.id%>. <%= song.name  %>, <%= song.artist%>, <%= song.genre %>, <%= song.release_date %>	
+    </li>	
+  <% end %>	
+</ul>	
+
+<a href='/songs/new'><button>Add to Song List</button></a> 
