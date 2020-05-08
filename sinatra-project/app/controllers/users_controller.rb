@@ -1,14 +1,14 @@
 class UsersController < ApplicationController
   
   get '/users/:id' do 
-    if logged_in?
+    if logged_in?(session)
       @user = User.find(params[:id])
       erb :'users/show'
     end 
   end 
   
   get '/sign_up' do 
-    if logged_in?
+    if logged_in?(session)
       redirect to 'songs'
     else
       erb :'/users/signup'
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   end 
 
   get '/logout' do 
-    if logged_in?
+    if logged_in?(session)
       if session.clear 
         redirect to '/'
       else
