@@ -1,7 +1,8 @@
 class SongsController < ApplicationController	
 
 
-  get '/songs' do 
+  get '/songs' do
+    @user = current_user
     @songs = current_user.songs
     erb :"songs/index"	
   end 	
