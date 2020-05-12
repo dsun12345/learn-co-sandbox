@@ -33,7 +33,7 @@ class SongsController < ApplicationController
 
   get '/songs/:id/edit' do 
     @song = Song.find_by_id(params[:id])
-    if @song && @song.user == current_user.id
+    if @song && @song.user.id == current_user.id
       erb :'songs/edit'	
     else 
       redirect to '/songs'
