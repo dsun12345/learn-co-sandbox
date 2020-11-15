@@ -1,9 +1,0 @@
-<h1>Show User</h1>	
-
-<%= @user.id %>. <%= @user.name %>, <%= @user.email%>	
-
-<form action='/users/<%= @user.id %>/deactivate' method='POST'>	
-  <input id='hidden' type='hidden' name='_method' value='DELETE' />	
-  <input type='submit' value ="Delete User">	
-</form>	
-<a href='/'><button>Back to Welcome Page</button></a> 
